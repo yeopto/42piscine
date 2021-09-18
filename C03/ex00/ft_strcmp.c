@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gunykim <gunykim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 00:46:01 by gunykim           #+#    #+#             */
-/*   Updated: 2021/09/16 13:43:21 by gunykim          ###   ########.fr       */
+/*   Created: 2021/09/16 14:15:01 by gunykim           #+#    #+#             */
+/*   Updated: 2021/09/16 15:28:21 by gunykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int	c;
-	unsigned int	i;
+	int	i;
 
-	c = 0;
 	i = 0;
-	while (src[c] != '\0')
+	while (s1[i] != '\0' || s2[i] != '\0')
 	{
-		c++;
+		if (s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+		else if (s1[i] < s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	if (size != 0)
-	{
-		while (src[i] != '\0' && i < (size - 1))
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (c);
+	return (0);
 }
