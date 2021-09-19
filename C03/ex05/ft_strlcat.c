@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gunykim <gunykim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/18 09:14:44 by gunykim           #+#    #+#             */
-/*   Updated: 2021/09/19 17:58:10 by gunykim          ###   ########.fr       */
+/*   Created: 2021/09/19 18:03:17 by gunykim           #+#    #+#             */
+/*   Updated: 2021/09/19 20:55:17 by gunykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int	i;
+	unsigned int	i;
 
-	if (to_find[0] == '\0')
-		return (str);
-	while (*str != '\0')
+	i = 0;
+	while (*dest && i < size)
 	{
-		i = 0;
-		while (*(str + i) == *(to_find + i))
-		{
-			i++;
-			if (*(to_find + i) == '\0')
-				return (str);
-		}
-		str++;
+		dest++;
+		i++;
 	}
-	return (0);
+	while (*src && i + 1 < size)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		i++;
+	}
+	if (i < size)
+		*dest = '\0';
+	while (*src)
+	{
+		i++;
+		src++;
+	}
+	return (i);
 }
